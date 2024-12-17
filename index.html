@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The License Plate Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>The License Plate Game</h1>
+    <p>Find the shortest word containing the license plate letters in order!</p>
+
+    <div class="game-container" id="game-container">
+        <div class="timer">60</div>
+        <div class="license-plate">ABC 123</div>
+        <div>
+            <button id="startGame">Start Game</button>
+        </div>
+        <div>
+            <input type="text" id="wordInput" placeholder="Enter your word" disabled>
+            <button id="submitButton" disabled>Submit</button>
+            <button id="skipButton" disabled>Skip</button>
+            <p>(Enter submits, Escape skips.)</p>
+        </div>
+        <div class="score">Score: 0</div>
+    </div>
+
+    <div class="history">
+        <h3>Your Words:</h3>
+        <div id="wordHistory"></div>
+    </div>
+
+    <div class="instructions">
+        <h3>How to Play:</h3>
+        <ul>
+            <li>You have 60 seconds to find as many words as possible.</li>
+            <li>Each license plate shows 3 letters and some numbers.</li>
+            <li>Enter a valid English word that contains those three letters in order (they don't need to be consecutive).</li>
+            <li>Shorter words earn more points!</li>
+            <li>Example: For "CPY", "capybara" works, but "copy" is better because it's shorter.</li>
+        </ul>
+    </div>
+
+    <footer>
+        <div class="content has-text-centered">
+            <p>
+                &copy; 2024 <a href="https://footle.org">Brad Greenlee</a>. <a href="https://github.com/bgreenlee/spelling-beat">Source code</a> licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.<br>
+                <a href="http://www.scrabbleplayers.org">NASPA Word List 2020 Edition</a> &copy; NASPA 2020. The copy included in this app is licensed for personal use. You may not use it for any commercial purposes.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/application.js"></script>
+</body>
+</html>
