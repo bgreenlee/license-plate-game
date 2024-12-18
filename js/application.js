@@ -60,7 +60,7 @@ function generateLicensePlate() {
       () => alphabet[Math.floor(random() * 26)]
     );
     // construct a regex to find words that contain these letters in the same order
-    validWordRE = new RegExp(letters.join("[^s]*?"), "i");
+    validWordRE = new RegExp(`[^\\s]*?${letters.join("[^\\s]*?")}[^\\s]*`, "i");
 
     if (words.match(validWordRE)) {
       break;
