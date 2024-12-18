@@ -1,4 +1,3 @@
-/*jslint maxlen: 100 */
 "use strict";
 import { Words } from "./words.js";
 
@@ -156,6 +155,7 @@ import { Words } from "./words.js";
     return matchingWords;
   }
 
+  // Submit
   submitButton.addEventListener("click", () => {
     const word = wordInput.value.trim();
 
@@ -191,6 +191,7 @@ import { Words } from "./words.js";
     }
   });
 
+  // Skip
   skipButton.addEventListener("click", () => {
     let skipPenalty = 1;
     score -= skipPenalty;
@@ -211,6 +212,7 @@ import { Words } from "./words.js";
     wordInput.value = "";
   });
 
+  // Hotkeys
   wordInput.addEventListener("keyup", (e) => {
     switch (e.key) {
       case "Enter":
@@ -222,8 +224,10 @@ import { Words } from "./words.js";
     }
   });
 
+  // Start game
   startButton.addEventListener("click", startGame);
 
+  // Share
   shareButton.addEventListener("click", () => {
     // copy results to clipboard
     const text = `I got ${score} points in License Plate Game! Try it yourself at https://licenseplategame.fun${location.hash}`;
