@@ -107,3 +107,81 @@ footer {
     flex-shrink: 0;
     padding: 1em 4em;
 }
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .game-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .license-plate {
+        margin: 10px;
+        padding: 15px;
+        font-size: 1.8em;
+        min-width: 180px;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 40px);
+        max-width: 200px;
+        min-height: 44px;
+    }
+
+    button {
+        min-height: 44px;
+        width: calc(100% - 20px);
+        max-width: 200px;
+        margin: 5px 10px;
+    }
+
+    .timer, .score {
+        margin: 10px;
+    }
+
+    .history, .instructions {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .instructions ul {
+        padding-left: 20px;
+    }
+
+    footer {
+        padding: 1em;
+    }
+}
+
+/* Medium-sized screens */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .game-container {
+        padding: 15px;
+    }
+
+    input[type="text"] {
+        min-height: 44px;
+    }
+
+    button {
+        min-height: 44px;
+    }
+}
+
+.desktop-only {
+    display: block;
+}
+
+@media screen and (max-width: 480px) {
+    .desktop-only {
+        display: none;
+    }
+}
