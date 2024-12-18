@@ -139,6 +139,13 @@ function calculatePoints(word) {
   return Math.max(20 - word.length * 2, 1);
 }
 
+function getValidwords(letters) {
+  let allWordsRE = new RegExp(validWordRE.source, "ig")
+  let matchingWords = words.match(allWordsRE);
+  matchingWords.sort((a,b) => a.length > b.length);
+  return matchingWords;
+}
+
 submitButton.addEventListener("click", () => {
   const word = wordInput.value.trim();
 
@@ -162,7 +169,9 @@ submitButton.addEventListener("click", () => {
     // Add to history
     const historyItem = document.createElement("div");
     historyItem.className = "history-item";
-    historyItem.textContent = `${currentLetters}: ${word} (+${points} points)`;
+    let validWords = getValidwords(currentLetters);
+    let helpText = validWords[0].length < word.length ? ` - Better: ${validWords[0]}` : "";
+    historyItem.textContent = `${currentLetters}: ${word} (+${points} points)${helpText}`;
     wordHistory.insertBefore(historyItem, wordHistory.firstChild);
 
     // Show new plate
@@ -180,7 +189,9 @@ skipButton.addEventListener("click", () => {
   // Add to history
   const historyItem = document.createElement("div");
   historyItem.className = "history-item";
-  historyItem.textContent = `${currentLetters}: <SKIP> (-${skipPenalty} points)`;
+  let validWords = getValidwords(currentLetters);
+  let helpText = `Answer(s): ${validWords[0]}${validWords.length > 1 ? ` and ${validWords.length - 1} more.` : ""}`;
+  historyItem.textContent = `${currentLetters}: <SKIP> (-${skipPenalty} points) - ${helpText}`;
   wordHistory.insertBefore(historyItem, wordHistory.firstChild);
 
   showNewPlate();
