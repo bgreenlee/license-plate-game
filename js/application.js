@@ -183,7 +183,7 @@ skipButton.addEventListener("click", () => {
   wordInput.value = "";
 });
 
-wordInput.addEventListener("keypress", (e) => {
+wordInput.addEventListener("keyup", (e) => {
   switch (e.key) {
     case "Enter":
       submitButton.click();
