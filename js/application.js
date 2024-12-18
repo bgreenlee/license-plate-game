@@ -11,6 +11,7 @@ let currentLetters = "";
 let allLetters = [];
 let score = 0;
 let isGameActive = false;
+let validWordRE;
 
 const wordInput = document.getElementById("wordInput");
 const submitButton = document.getElementById("submitButton");
@@ -59,8 +60,9 @@ function generateLicensePlate() {
       () => alphabet[Math.floor(random() * 26)]
     );
     // construct a regex to find words that contain these letters in the same order
-    let re = new RegExp(`\\b${letters.join("[^s]*?")}\\b`, "i");
-    if (words.match(re)) {
+    validWordRE = new RegExp(letters.join("[^s]*?"), "i");
+
+    if (words.match(validWordRE)) {
       break;
     }
   }
@@ -128,18 +130,8 @@ function showNewPlate() {
   allLetters.push(currentLetters);
 }
 
-function checkWordLetters(word, letters) {
-  word = word.toLowerCase();
-  let letterIndex = 0;
-  for (let char of word) {
-    if (char === letters[letterIndex]) {
-      letterIndex++;
-      if (letterIndex === letters.length) {
-        return false;
-      }
-    }
-  }
-  return true;
+function checkWord(word, letters) {
+    return word.match(validWordRE) && wordset.has(word.toLowerCase())
 }
 
 function calculatePoints(word) {
@@ -150,10 +142,7 @@ function calculatePoints(word) {
 submitButton.addEventListener("click", () => {
   const word = wordInput.value.trim();
 
-  if (
-    !checkWordLetters(word, currentLetters) ||
-    !wordset.has(word.toLowerCase())
-  ) {
+  if (!checkWord(word, currentLetters)) {
     // add the "wrong" class to the game-container briefly
     gameContainer.classList.add("wrong");
     setTimeout(() => {
