@@ -144,7 +144,7 @@ function checkWordLetters(word, letters) {
 
 function calculatePoints(word) {
   // Shorter words get more points
-  return Math.max(20 - word.length, 1);
+  return Math.max(20 - word.length * 2, 1);
 }
 
 submitButton.addEventListener("click", () => {
