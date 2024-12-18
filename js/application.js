@@ -173,7 +173,7 @@ submitButton.addEventListener("click", () => {
 });
 
 skipButton.addEventListener("click", () => {
-  let skipPenalty = 10;
+  let skipPenalty = 1;
   score -= skipPenalty;
   scoreDisplay.textContent = `Score: ${score}`;
 
