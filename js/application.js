@@ -194,7 +194,7 @@ skipButton.addEventListener("click", () => {
   // Add to history
   const historyItem = document.createElement("div");
   historyItem.className = "history-item";
-  let validWords = getValidords(currentLetters);
+  let validWords = getValidWords(currentLetters);
   let helpText = `Answer(s): ${validWords[0]}${
     validWords.length > 1 ? ` and ${validWords.length - 1} more.` : ""
   }`;
