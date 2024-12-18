@@ -15,7 +15,7 @@
             <button id="startGame">Start Game</button>
         </div>
         <div>
-            <input type="text" id="wordInput" placeholder="Enter your word" disabled>
+            <input type="text" id="wordInput" placeholder="Enter your word" autocomplete="off" disabled>
             <button id="submitButton" disabled>Submit</button>
             <button id="skipButton" disabled>Skip</button>
             <p>(Enter submits, Escape skips.)</p>
@@ -31,10 +31,12 @@
     <div class="instructions">
         <h3>How to Play:</h3>
         <ul>
-            <li>You have 60 seconds to find as many words as possible.</li>
-            <li>Each license plate shows 3 letters and some numbers.</li>
+            <li>Each license plate shows three letters and some irrelevant numbers.</li>
             <li>Enter a valid English word that contains those three letters in order (they don't need to be consecutive).</li>
+            <li>Your words must be at least four letters long.</li>
             <li>Shorter words earn more points!</li>
+            <li>You have 60 seconds to find as many words as possible.</li>
+            <li>You can skip a word, but you'll incur a penalty.</li>
             <li>Example: For "CPY", "capybara" works, but "copy" is better because it's shorter.</li>
         </ul>
     </div>
