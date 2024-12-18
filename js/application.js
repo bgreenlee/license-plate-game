@@ -16,6 +16,8 @@ const wordInput = document.getElementById("wordInput");
 const submitButton = document.getElementById("submitButton");
 const skipButton = document.getElementById("skipButton");
 const startButton = document.getElementById("startGame");
+const shareButton = document.getElementById("shareButton");
+const copiedResults = document.getElementById("copiedResults");
 const timerDisplay = document.querySelector(".timer");
 const scoreDisplay = document.querySelector(".score");
 const licensePlate = document.querySelector(".license-plate");
@@ -36,9 +38,14 @@ function splitmix32(a) {
   };
 }
 
-let seed = location.hash == "" ? (Math.random() * 2 ** 32) >>> 0 : parseInt(location.hash.substring(1), 10);
+function newSeed() {
+  return (Math.random() * 2 ** 32) >>> 0;
+}
+
+let seed =
+  location.hash == "" ? newSeed() : parseInt(location.hash.substring(1), 10);
+let random = splitmix32(seed);
 location.hash = `#${seed}`;
-const random = splitmix32(seed);
 
 function generateLicensePlate() {
   let alphabet = Array(26)
@@ -52,7 +59,7 @@ function generateLicensePlate() {
       () => alphabet[Math.floor(random() * 26)]
     );
     // construct a regex to find words that contain these letters in the same order
-    let re = new RegExp(`\\b${letters.join("[^\s]*?")}\\b`, "i");
+    let re = new RegExp(`\\b${letters.join("[^s]*?")}\\b`, "i");
     if (words.match(re)) {
       break;
     }
@@ -78,6 +85,12 @@ function updateTimer() {
 }
 
 function startGame() {
+  if (startButton.innerText == "New Game") {
+    let seed = newSeed();
+    random = splitmix32(seed);
+    location.hash = `#${seed}`;
+  }
+
   isGameActive = true;
   timeLeft = 60;
   score = 0;
@@ -89,6 +102,7 @@ function startGame() {
   submitButton.disabled = false;
   skipButton.disabled = false;
   startButton.disabled = true;
+  shareButton.style.display = "none";
 
   showNewPlate();
   wordInput.focus();
@@ -101,8 +115,10 @@ function endGame() {
   wordInput.disabled = true;
   submitButton.disabled = true;
   skipButton.disabled = true;
+  startButton.innerText = "New Game";
   startButton.disabled = false;
-  alert(`Game Over! Final Score: ${score}`);
+  shareButton.style.display = "inline-block";
+  timerDisplay.textContent = "Game Over!";
 }
 
 function showNewPlate() {
@@ -195,3 +211,17 @@ wordInput.addEventListener("keyup", (e) => {
 });
 
 startButton.addEventListener("click", startGame);
+
+shareButton.addEventListener("click", () => {
+  // copy results to clipboard
+  const text = `I got ${score} points in License Plate Game! Try it yourself at https://licenseplategame.fun${location.hash}`;
+  try {
+    navigator.clipboard.writeText(text);
+    copiedResults.style.display = "block";
+    setTimeout(() => {
+      copiedResults.style.display = "none";
+    }, 3000);
+  } catch (error) {
+    console.error(error.message);
+  }
+});

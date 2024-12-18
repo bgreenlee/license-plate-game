@@ -72,6 +72,19 @@ button:disabled {
     cursor: not-allowed;
 }
 
+#shareButton {
+    display: none;
+}
+
+#shareButton svg {
+    float: left;
+    padding-right: 0.5rem;
+}
+
+#copiedResults {
+    display: none;
+}
+
 .history {
     margin-top: 20px;
     text-align: left;
