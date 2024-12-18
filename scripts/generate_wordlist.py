@@ -7,7 +7,7 @@ rootdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..')
 datadir = os.path.join(rootdir, "data")
 
 # read the NASPA word list
-with open(os.path.join(datadir, "nwl2020.txt")) as f:
+with open(os.path.join(datadir, "wordnik.txt")) as f:
     nwl_words = f.read().strip().split("\n")
 
 # filter out invalid words
