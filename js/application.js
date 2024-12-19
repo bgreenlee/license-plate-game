@@ -125,7 +125,7 @@ import { Words } from "./words.js";
     let helpText = `Answer(s): ${validWords[0]}${
       validWords.length > 1 ? ` and <div class="more-words">${validWords.length - 1} more.<div class="more-words-list">${validWords.join(", ")}</div></div>` : ""
     }`;
-    historyItem.textContent = `${currentLetterString}: <TIME> - ${helpText}`;
+    historyItem.innerHTML = `${currentLetterString}: <TIME> - ${helpText}`;
     wordHistory.insertBefore(historyItem, wordHistory.firstChild);
   }
 
