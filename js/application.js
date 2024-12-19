@@ -148,9 +148,10 @@ import { Words } from "./words.js";
 
   function getValidWords(letters) {
     let allWordsRE = validWordRegExp(letters, "ig");
-    let matchingWords = Words.common.match(allWordsRE).concat(Words.uncommon.match(allWordsRE));
-    matchingWords.sort((a, b) => a.length > b.length);
-    return matchingWords;
+    let commonMatches = Words.common.match(allWordsRE).sort((a, b) => a.length > b.length);
+    let uncommonMatches = Words.uncommon.match(allWordsRE).sort((a, b) => a.length > b.length);
+    // make sure common words come first
+    return commonMatches.concat(uncommonMatches);
   }
 
   // Submit
