@@ -42,7 +42,13 @@ import { Words } from "./words.js";
     return (Math.random() * 2 ** 32) >>> 0;
   }
 
-  let seed = location.hash == "" ? newSeed() : parseInt(location.hash.substring(1), 10);
+  let seed;
+  if (location.hash == "") {
+    seed = newSeed();
+  } else {
+    seed = parseInt(location.hash.substring(1), 10);
+    history.pushState("", document.title, window.location.pathname + window.location.search); // remove the hash
+  }
   let random = splitmix32(seed);
 
   // regex to match words that contain the given letters in order
@@ -73,7 +79,7 @@ import { Words } from "./words.js";
       .toString()
       .padStart(numlen, "0");
 
-    return `${currentLetterString}-${numbers}`;
+    return `${currentLetterString} ${numbers}`;
   }
 
   function updateTimer() {
