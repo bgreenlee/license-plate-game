@@ -44,7 +44,6 @@ import { Words } from "./words.js";
 
   let seed = location.hash == "" ? newSeed() : parseInt(location.hash.substring(1), 10);
   let random = splitmix32(seed);
-  location.hash = `#${seed}`;
 
   // regex to match words that contain the given letters in order
   function validWordRegExp(letters, flags = "i") {
@@ -90,7 +89,6 @@ import { Words } from "./words.js";
     if (startButton.innerText == "New Game") {
       let seed = newSeed();
       random = splitmix32(seed);
-      location.hash = `#${seed}`;
     }
 
     timeLeft = 60;
@@ -230,7 +228,7 @@ import { Words } from "./words.js";
   // Share
   shareButton.addEventListener("click", () => {
     // copy results to clipboard
-    const text = `I got ${score} points in License Plate Game! Try it yourself at https://licenseplategame.fun${location.hash}`;
+    const text = `I got ${score} points in License Plate Game! Try it yourself at https://licenseplategame.fun#${seed}`;
     try {
       navigator.clipboard.writeText(text);
       copiedResults.style.display = "block";
