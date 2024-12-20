@@ -74,10 +74,16 @@ button {
     margin: 5px;
 }
 
-button:disabled {
+#skipButton {
+    background-color: #cc3333;
+}
+
+button:disabled, #skipButton:disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
 }
+
+
 
 #shareButton {
     display: none;
@@ -100,6 +106,7 @@ button:disabled {
 
 .history-item {
     margin: 5px 0;
+    position: relative;
 }
 
 .help {
@@ -225,27 +232,24 @@ footer {
 }
 
 .more-words {
-    position: relative;
+    /* position: relative; */
     display: inline-block;
     border-bottom: 1px dotted blue;
+    cursor: pointer;
 }
 
 .more-words .more-words-list {
     visibility: hidden;
-    width: 30rem;
+    width: 100%;
     background-color: white;
     padding: 0.5rem;
     position: absolute;
-    top: -1rem;
-    left: 3rem;
+    top: 2rem;
+    left: 0;
     max-height: 20rem;
     overflow: auto;
     z-index: 1;
     border-radius: 8px;
     border: 1px solid #ccc;
     box-shadow: 0 4px 20px 0 #ccc;
-}
-
-.more-words:hover .more-words-list {
-    visibility: visible;
 }

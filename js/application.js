@@ -270,4 +270,17 @@ import { Words } from "./words.js";
   instructionsClose.addEventListener("click", () => {
     instructionsModal.style.visibility = "hidden";
   });
+
+  // More words
+  document.addEventListener("click", (e) => {
+    const target = e.target.closest(".more-words");
+    if (!target) {
+      document.querySelectorAll(".more-words-list").forEach((list) => {
+        list.style.visibility = "hidden";
+      });
+      return
+    }
+    const list = target.querySelector(".more-words-list")
+    list.style.visibility = list.style.visibility == "hidden" ? "visible" : "hidden";
+  });
 })();
