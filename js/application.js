@@ -23,6 +23,9 @@ import { Words } from "./words.js";
   const licensePlate = document.querySelector(".license-plate");
   const wordHistory = document.getElementById("wordHistory");
   const gameContainer = document.getElementById("game-container");
+  const instructionsButton = document.getElementById("instructionsButton");
+  const instructionsModal = document.getElementById("instructionsModal");
+  const instructionsClose = document.getElementById("instructionsClose");
 
   // use our own random number generator so we can seed it (Math.random() can't be seeded)
   // from https://stackoverflow.com/a/47593316/69721
@@ -84,6 +87,9 @@ import { Words } from "./words.js";
 
   function updateTimer() {
     timerDisplay.textContent = timeLeft;
+    if (timeLeft <= 10) {
+      timerDisplay.classList.add("timer-warning");
+    }
     if (timeLeft <= 0) {
       endGame();
     } else {
@@ -98,6 +104,9 @@ import { Words } from "./words.js";
     }
 
     timeLeft = 60;
+    timerDisplay.textContent = timeLeft;
+    timerDisplay.classList.remove("timer-warning");
+
     score = 0;
     wordHistory.innerHTML = "";
     scoreDisplay.textContent = `Score: ${score}`;
@@ -245,5 +254,13 @@ import { Words } from "./words.js";
     } catch (error) {
       console.error(error.message);
     }
+  });
+
+  // Help
+  instructionsButton.addEventListener("click", () => {
+    instructionsModal.style.visibility = "visible";
+  });
+  instructionsClose.addEventListener("click", () => {
+    instructionsModal.style.visibility = "hidden";
   });
 })();
