@@ -8,7 +8,7 @@ datadir = os.path.join(rootdir, "data")
 jsdir = os.path.join(rootdir, "js")
 
 # read the main word list
-with open(os.path.join(datadir, "nwl2020.txt")) as f:
+with open(os.path.join(datadir, "nwl2023.txt")) as f:
     nwl_words = f.read().strip().split("\n")
 
 # read the top N words list
