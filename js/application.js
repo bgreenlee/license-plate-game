@@ -193,7 +193,7 @@ import { Words } from "./words.js";
       let bonusText = "";
       if (validWords.length < 100) {
         bonus = 10;
-        bonusText = ` +${bonus} hard word bonus`;
+        bonusText = ` +${bonus} hard combo bonus`;
       }
       score += points + bonus;
       scoreDisplay.textContent = `Score: ${score}`;
