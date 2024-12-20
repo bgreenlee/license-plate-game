@@ -186,16 +186,23 @@ import { Words } from "./words.js";
         gameContainer.classList.remove("correct");
       }, 100);
 
+      let validWords = getValidWords(currentLetters);
+
       const points = calculatePoints(word);
-      score += points;
+      let bonus = 0;
+      let bonusText = "";
+      if (validWords.length < 100) {
+        bonus = 10;
+        bonusText = ` +${bonus} hard word bonus`;
+      }
+      score += points + bonus;
       scoreDisplay.textContent = `Score: ${score}`;
 
       // Add to history
       const historyItem = document.createElement("div");
       historyItem.className = "history-item";
-      let validWords = getValidWords(currentLetters);
       let helpText = validWords[0].length < word.length ? ` - Better: ${validWords[0]}` : "";
-      historyItem.textContent = `${currentLetterString}: ${word} (+${points} points)${helpText}`;
+      historyItem.textContent = `${currentLetterString}: ${word} (+${points} points${bonusText})${helpText}`;
       wordHistory.insertBefore(historyItem, wordHistory.firstChild);
 
       // Show new plate
