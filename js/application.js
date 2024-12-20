@@ -11,6 +11,7 @@ import { Words } from "./words.js";
   let currentLetterString = "";
   let allLetters = [];
   let score = 0;
+  let totalWords = 0;
 
   const wordInput = document.getElementById("wordInput");
   const submitButton = document.getElementById("submitButton");
@@ -108,6 +109,7 @@ import { Words } from "./words.js";
     timerDisplay.classList.remove("timer-warning");
 
     score = 0;
+    totalWords = 0;
     wordHistory.innerHTML = "";
     scoreDisplay.textContent = `Score: ${score}`;
 
@@ -197,6 +199,7 @@ import { Words } from "./words.js";
       }
       score += points + bonus;
       scoreDisplay.textContent = `Score: ${score}`;
+      totalWords++;
 
       // Add to history
       const historyItem = document.createElement("div");
@@ -251,7 +254,7 @@ import { Words } from "./words.js";
   // Share
   shareButton.addEventListener("click", () => {
     // copy results to clipboard
-    const text = `I got ${score} points in License Plate Game! Try it yourself at https://licenseplategame.fun#${seed}`;
+    const text = `I got ${totalWords} words for ${score} points in License Plate Game! Try it yourself at https://licenseplategame.fun#${seed}`;
     try {
       navigator.clipboard.writeText(text);
       copiedResults.style.display = "block";
