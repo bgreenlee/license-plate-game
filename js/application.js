@@ -6,7 +6,7 @@ import { Words } from "./words.js";
   const uncommonWordset = new Set(Words.uncommon.split(" "));
 
   let timer;
-  let timeLeft = 60;
+  let timeLeft = 120;
   let currentLetters = [];
   let currentLetterString = "";
   let allLetters = [];
@@ -105,7 +105,7 @@ import { Words } from "./words.js";
       random = splitmix32(seed);
     }
 
-    timeLeft = 60;
+    timeLeft = 120;
     timerDisplay.textContent = timeLeft;
     timerDisplay.classList.remove("timer-warning");
 
