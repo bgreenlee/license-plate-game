@@ -4,7 +4,7 @@
     <title>The License Plate Game</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css?v=40">
+    <link rel="stylesheet" href="css/style.css?v=41">
 </head>
 <body>
     <h1>The License Plate Game</h1>
@@ -36,7 +36,10 @@
             <button id="startGame">Start Game</button>
         </div>
         <div>
-            <input type="text" id="wordInput" placeholder="Enter your word" autocomplete="off" disabled>
+            <div class="input-container">
+                <input type="text" id="wordInput" placeholder="Enter your word" autocomplete="off" disabled>
+                <div id="wrongSymbol">X</div>
+            </div>
             <button id="submitButton" disabled>Submit</button>
             <button id="skipButton" disabled>Skip</button>
             <p class="desktop-only">(Enter submits, Escape skips.)</p>
@@ -60,13 +63,13 @@
     <footer>
         <div class="content has-text-centered">
             <p>
-                Version 40<br>
+                Version 41<br>
                 &copy; 2024 <a href="https://footle.org">Brad Greenlee</a>.<br>
                 <a href="http://www.scrabbleplayers.org">NASPA Word List 2023 Edition</a> &copy; NASPA 2023. The copy included in this app is licensed for non-commercial use. You may not use it for any commercial purposes.
             </p>
         </div>
     </footer>
 
-    <script type="module" src="js/application.js?v=40"></script>
+    <script type="module" src="js/application.js?v=41"></script>
 </body>
 </html>

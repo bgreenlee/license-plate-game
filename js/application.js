@@ -14,6 +14,7 @@ import { Words } from "./words.js";
   let totalWords = 0;
 
   const wordInput = document.getElementById("wordInput");
+  const wrongSymbol = document.getElementById("wrongSymbol");
   const submitButton = document.getElementById("submitButton");
   const skipButton = document.getElementById("skipButton");
   const startButton = document.getElementById("startGame");
@@ -178,9 +179,11 @@ import { Words } from "./words.js";
     if (!checkWord(word, currentLetters)) {
       // add the "wrong" class to the game-container briefly
       gameContainer.classList.add("wrong");
+      wrongSymbol.style.visibility = "visible";
       setTimeout(() => {
         gameContainer.classList.remove("wrong");
-      }, 100);
+        wrongSymbol.style.visibility = "hidden";
+      }, 150);
       wordInput.value = "";
     } else {
       gameContainer.classList.add("correct");

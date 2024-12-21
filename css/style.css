@@ -39,6 +39,23 @@ body {
     margin-top: 20px;
 }
 
+.input-container {
+    position: relative;
+}
+
+#wrongSymbol {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -20px;
+    color: red;
+    font-size: 80px;
+    font-weight: bold;
+    opacity: 0.2;
+}
+
 .timer {
     font-size: 2rem;
     margin: 1rem;
@@ -175,6 +192,11 @@ footer {
         width: calc(100% - 40px);
         max-width: 200px;
         min-height: 44px;
+    }
+
+    #wrongSymbol {
+        margin-top: -7px;
+        margin-left: -22px;
     }
 
     button {
