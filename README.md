@@ -1,1 +1,3 @@
-# license-plate-game
+# The License Plate Game
+
+https://licenseplategame.fun
